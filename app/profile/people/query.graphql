@@ -1,0 +1,20 @@
+query PeopleQuery {
+  organization(login: "github") {
+    id
+    people: membersWithRole(first: 10) {
+      totalCount
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      edges {
+        node {
+          id
+          name
+          avatarUrl
+          login
+        }
+      }
+    }
+  }
+}

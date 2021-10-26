@@ -1,0 +1,12 @@
+.avatar {
+  width: 96px;
+  height: 96px;
+
+  @apply rounded-3xl;
+}
+
+.avatar:global(.small) {
+  width: 48px;
+  height: 48px;
+  @apply rounded-xl;
+}

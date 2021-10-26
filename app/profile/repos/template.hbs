@@ -1,0 +1,18 @@
+{{page-title 'Repositories'}}
+<button type='button' {{on 'click' this.loadMore}}>
+  Load more
+</button>
+{{#each @model.repos as |repo|}}
+  <div local-class='repo'>
+    <div>
+      <div class='text-lg'>
+        {{repo.name}}
+      </div>
+      <div class='text-gray-600'>
+        {{repo.description}}
+        {{repo.language.name}}
+      </div>
+      {{repo.nameWithOwner}}
+    </div>
+  </div>
+{{/each}}

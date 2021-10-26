@@ -1,0 +1,15 @@
+.person {
+  @apply flex mb-4 items-center;
+}
+
+.info {
+  @apply pl-2;
+}
+
+.name {
+  @apply font-bold;
+}
+
+.login {
+  @apply text-gray-500;
+}

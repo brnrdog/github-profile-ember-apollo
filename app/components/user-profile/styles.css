@@ -1,0 +1,34 @@
+.user-profile {
+  @apply bg-gray-100;
+}
+
+.user-profile a:hover {
+  @apply underline;
+}
+
+.container {
+  @apply max-w-screen-md mx-auto p-6 flex items-center;
+}
+
+.username {
+  @apply font-semibold text-lg;
+}
+
+.location {
+  @apply text-sm text-gray-500;
+}
+
+.bio {
+  @apply text-gray-600 text-sm mb-2;
+}
+
+.bio-heading {
+}
+
+.info {
+  @apply flex text-sm text-gray-500;
+}
+
+.info > div:not(:last-child) {
+  @apply mr-4;
+}

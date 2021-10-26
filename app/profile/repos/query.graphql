@@ -1,0 +1,28 @@
+query RepositoriesQuery($endCursor: String) {
+  organization(login: "github") {
+    id
+    repositories(
+      first: 5
+      after: $endCursor
+      orderBy: { field: STARGAZERS, direction: DESC }
+    ) {
+      totalCount
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      edges {
+        node {
+          id
+          name
+          nameWithOwner
+          description
+          url
+          stargazers {
+            totalCount
+          }
+        }
+      }
+    }
+  }
+}

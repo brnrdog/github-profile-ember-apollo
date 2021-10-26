@@ -1,0 +1,19 @@
+.container {
+  @apply border-t border-b;
+}
+
+.container ul {
+  @apply max-w-screen-md mx-auto px-6 flex items-center;
+}
+
+.container ul li {
+  @apply px-4 py-2 border-b-2 border-transparent;
+}
+
+.container ul :global(.active) li {
+  @apply border-gray-800;
+}
+
+.container ul a:not(:global(.active)) li:hover {
+  @apply border-gray-200;
+}

@@ -1,0 +1,12 @@
+query OrganizationQuery {
+  organization(login: "github") {
+    id
+    name
+    login
+    bio: description
+    websiteUrl
+    avatarUrl
+    location
+    isVerified
+  }
+}

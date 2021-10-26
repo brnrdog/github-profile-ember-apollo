@@ -1,0 +1,31 @@
+<div local-class='user-profile'>
+  <div local-class='container'>
+    <Avatar @user={{@user}} />
+    <div class='flex flex-col ml-4'>
+      <div local-class='username'>
+        {{@user.name}}
+      </div>
+      {{#if @user.bio}}
+        <div local-class='bio'>
+          {{@user.bio}}
+        </div>
+      {{/if}}
+      <div local-class='info'>
+        <div>
+          <FaIcon @icon='map-marker-alt' />
+          {{@user.location}}
+        </div>
+        <div>
+          <FaIcon @icon='link' />
+          <a
+            href={{@user.websiteUrl}}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            {{@user.websiteUrl}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
