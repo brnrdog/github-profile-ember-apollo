@@ -1,6 +1,7 @@
 import ApolloService from 'ember-apollo-client/services/apollo';
 import { setContext } from '@apollo/client/link/context';
 import { HttpLink } from '@apollo/client/link/http';
+
 import ENV from 'github-profile/config/environment';
 
 export default class GraphqlService extends ApolloService {

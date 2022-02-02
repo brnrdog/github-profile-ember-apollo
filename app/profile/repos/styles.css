@@ -5,7 +5,3 @@
 .container {
   @apply max-w-screen-md mx-auto px-8;
 }
-
-.repo {
-  @apply my-4 flex;
-}
