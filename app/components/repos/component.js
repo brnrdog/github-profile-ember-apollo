@@ -1,36 +1,16 @@
-import { inject as service } from '@ember/service';
-import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
-import { task } from 'ember-concurrency';
-import { loadMoreFactory, mapEdges } from '../../graphql';
+import GraphqlConnectionComponent from '../graphql-connection/component';
 import query from './query.graphql';
 
-export default class ReposComponent extends Component {
-  @service graphql;
-  @tracked data;
-
-  constructor() {
-    super(...arguments);
-    this.fetchData.perform();
+export default class ReposComponent extends GraphqlConnectionComponent {
+  get path() {
+    return 'organization.repositories';
   }
 
-  @task
-  *fetchData() {
-    this.data = yield this.graphql.watchQuery({ query });
-  }
-
-  @task
-  *loadMore() {
-    const path = 'organization.repositories';
-    const loadMore = loadMoreFactory(this.data, { path });
-    yield loadMore();
+  get query() {
+    return query;
   }
 
   get repositories() {
-    return mapEdges(this.data, { path: 'organization.repositories' });
-  }
-
-  get loading() {
-    return this.fetchData.isRunning || this.loadMore.isRunning;
+    return this.nodes;
   }
 }

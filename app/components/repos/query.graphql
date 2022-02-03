@@ -18,6 +18,10 @@ query RepositoriesQuery($endCursor: String) {
           nameWithOwner
           description
           url
+          primaryLanguage {
+            name
+            color
+          }
           stargazers {
             totalCount
           }
