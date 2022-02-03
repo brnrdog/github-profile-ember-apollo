@@ -1,7 +1,7 @@
-import GraphqlConnectionComponent from '../graphql-connection/component';
+import GraphqlConnectionComponent from '../../graphql-connection/component';
 import query from './query.graphql';
 
-export default class ReposComponent extends GraphqlConnectionComponent {
+export default class RepositoriesComponent extends GraphqlConnectionComponent {
   setup() {
     this.query = query;
     this.path = 'organization.repositories';
