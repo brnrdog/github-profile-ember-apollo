@@ -1,11 +1,3 @@
 {{page-title 'People'}}
 
-{{#each @model as |user|}}
-  <div local-class='person'>
-    <Avatar @size='sm' @user={{user}} />
-    <div local-class='info'>
-      <div local-class='name'>{{user.name}}</div>
-      <div local-class='login'>{{user.login}}</div>
-    </div>
-  </div>
-{{/each}}
+<UserProfile::People />

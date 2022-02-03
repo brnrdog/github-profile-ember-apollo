@@ -1,12 +1,14 @@
-query PeopleQuery {
+query PeopleQuery($endCursor: String) {
   organization(login: "github") {
     id
-    people: membersWithRole(first: 10) {
+    people: membersWithRole(first: 10, after: $endCursor) {
       totalCount
+
       pageInfo {
         hasNextPage
         endCursor
       }
+
       edges {
         node {
           id

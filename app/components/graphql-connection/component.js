@@ -10,6 +10,7 @@ export default class GraphqlConnectionComponent extends Component {
 
   constructor() {
     super(...arguments);
+    this.setup();
     this.fetchData.perform();
   }
 

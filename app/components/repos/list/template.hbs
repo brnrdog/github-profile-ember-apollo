@@ -2,16 +2,34 @@
   <div class='my-4 flex'>
     <div>
       <div class='text-lg'>
-        {{repo.name}}
+        {{repo.nameWithOwner}}
       </div>
-      <div class='text-gray-600'>
+      <div class='text-gray-600 mb-2'>
         {{repo.description}}
         {{repo.language.name}}
       </div>
-      {{repo.nameWithOwner}}
+      <div class='text-sm text-gray-500 flex items-center'>
+        {{#if repo.primaryLanguage}}
+          <div class='flex items-center'>
+            {{! template-lint-disable style-concatenation }}
+            <div
+              class='w-4 h-4 rounded-full bg-white mr-2'
+              style={{concat 'background-color: ' repo.primaryLanguage.color}}
+            >
+            </div>
+            {{repo.primaryLanguage.name}}
+          </div>
+        {{/if}}
+        <div class='flex items-center'>
+          <div class='text-gray-700'>
+            <FaIcon @icon='star' @prefix='far' />
+          </div>
+          {{repo.stargazers.totalCount}}
+        </div>
+      </div>
     </div>
   </div>
 {{/each}}
-<button type='button' {{on 'click' @loadMore}} disabled={{@loading}}>
+<Button {{on 'click' @loadMore}} disabled={{@loading}}>
   {{if @loading 'Loading...' 'Load more'}}
-</button>
+</Button>
