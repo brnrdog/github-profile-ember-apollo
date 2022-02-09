@@ -1,13 +1,3 @@
-import GraphqlConnectionComponent from '../../graphql-connection/component';
-import query from './query.graphql';
+import GraphqlConnectinoPeopleComponent from '../../graphql-connection/people/component';
 
-export default class OrganizationProfilePeopleComponent extends GraphqlConnectionComponent {
-  setup() {
-    this.query = query;
-    this.path = 'organization.people';
-  }
-
-  get people() {
-    return this.nodes;
-  }
-}
+export default class OrganizationProfilePeopleComponent extends GraphqlConnectinoPeopleComponent {}
