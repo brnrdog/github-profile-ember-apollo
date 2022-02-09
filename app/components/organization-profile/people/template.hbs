@@ -1,10 +1,19 @@
-{{#each this.people as |user|}}
-  <div local-class='person'>
-    <Avatar @size='sm' @user={{user}} />
-    <div local-class='info'>
-      <div local-class='name'>{{user.name}}</div>
-      <div local-class='login'>{{user.login}}</div>
+{{#if this.isFirstLoading}}
+  <LoadingState>
+    Fetching people, please wait...
+  </LoadingState>
+{{else}}
+  {{#each this.people as |user|}}
+    <div local-class='person'>
+      <Avatar @size='sm' @user={{user}} />
+      <div local-class='info'>
+        <div local-class='name'>{{user.name}}</div>
+        <div local-class='login'>{{user.login}}</div>
+      </div>
     </div>
-  </div>
-{{/each}}
-<LoadMoreButton @loading={{this.loading}} @loadMore={{perform this.loadMore}} />
+  {{/each}}
+  <LoadMoreButton
+    @loading={{this.loading}}
+    @loadMore={{perform this.loadMore}}
+  />
+{{/if}}

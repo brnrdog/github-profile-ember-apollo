@@ -1,5 +1,11 @@
-<OrganizationProfile::Repositories::List
-  @repos={{this.repositories}}
-  @loadMore={{perform this.loadMore}}
-  @loading={{this.loading}}
-/>
+{{#if this.isFirstLoading}}
+  <LoadingState>
+    Fetching repositories, please wait...
+  </LoadingState>
+{{else}}
+  <OrganizationProfile::Repositories::List
+    @repos={{this.repositories}}
+    @loadMore={{perform this.loadMore}}
+    @loading={{this.loading}}
+  />
+{{/if}}

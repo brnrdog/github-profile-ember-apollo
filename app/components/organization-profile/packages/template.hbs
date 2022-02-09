@@ -1,5 +1,7 @@
 {{#if this.isFirstLoading}}
-  Loading...
+  <LoadingState>
+    Fetching packages, please wait...
+  </LoadingState>
 {{else}}
   <div class='mb-4'>
     {{this.totalCount}}
