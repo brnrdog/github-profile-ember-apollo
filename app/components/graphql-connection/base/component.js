@@ -2,9 +2,10 @@ import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { task } from 'ember-concurrency';
-import { loadMoreFactory, mapEdges } from '../../graphql';
+import get from 'lodash/get';
+import { loadMoreFactory, mapEdges } from '../../../graphql';
 
-export default class GraphqlConnectionComponent extends Component {
+export default class GraphqlConnectionBaseComponent extends Component {
   @service graphql;
   @tracked data;
 
@@ -29,7 +30,19 @@ export default class GraphqlConnectionComponent extends Component {
     return mapEdges(this.data, { path: this.path });
   }
 
+  get isFirstLoading() {
+    return this.fetchData.isRunning;
+  }
+
+  get isLoadingMore() {
+    return this.loadMore.isRunning;
+  }
+
   get loading() {
-    return this.fetchData.isRunning || this.loadMore.isRunning;
+    return this.isFirstLoading || this.isLoadingMore;
+  }
+
+  get totalCount() {
+    return get(this.data, `${this.path}.totalCount`);
   }
 }
