@@ -1,0 +1,35 @@
+query OrganizationPackagesQuery($endCursor: String) {
+  organization(login: "github") {
+    id
+    packages(first: 10, after: $endCursor) {
+      totalCount
+
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+
+      edges {
+        node {
+          id
+          name
+          packageType
+          latestVersion {
+            platform
+            version
+            release {
+              createdAt
+            }
+          }
+          repository {
+            nameWithOwner
+            url
+          }
+          statistics {
+            downloadsTotalCount
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{{#if this.isFirstLoading}}
+  Loading...
+{{else}}
+  <div class='mb-4'>
+    {{this.totalCount}}
+    packages found
+  </div>
+  <div class='flex gap-4 flex-col'>
+    {{#each this.packages as |package|}}
+      <div>
+        <div class='font-semibold'>
+          {{package.name}}
+        </div>
+        <div class='text-sm text-gray-600'>
+          <ul class='flex gap-4'>
+            <li>
+              v
+              {{package.latestVersion.version}}
+            </li>
+            <li>
+              <FaIcon @icon='arrow-down' />
+              {{package.statistics.downloadsTotalCount}}
+              downloads
+            </li>
+            {{#if package.latestVersion.release}}
+              <li>
+                published on
+                {{date-format
+                  package.latestVersion.release.createdAt
+                  'DD MMM YYYY'
+                }}
+              </li>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    {{/each}}
+    <div>
+      <LoadMoreButton
+        @loading={{this.loading}}
+        @loadMore={{perform this.loadMore}}
+      />
+    </div>
+  </div>
+{{/if}}
