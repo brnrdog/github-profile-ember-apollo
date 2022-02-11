@@ -8,15 +8,16 @@ import { loadMoreFactory, mapEdges } from '../../../graphql';
 export default class GraphqlConnectionBaseComponent extends Component {
   @service graphql;
   @tracked data;
+  @tracked variables;
 
   constructor() {
     super(...arguments);
-    this.setup();
     this.fetchData.perform();
   }
 
   @task
   *fetchData() {
+    this.setup();
     this.data = yield this.graphql.watchQuery({
       query: this.query,
       variables: this.variables,
