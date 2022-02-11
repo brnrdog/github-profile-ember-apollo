@@ -3,7 +3,7 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 const cssModules = {
-  headerModules: ['github-profile/styles/app'],
+  headerModules: ['github-profile/styles'],
   options: {
     postcss: {
       cacheInclude: [/.*\.(css|scss|hbs)$/, /.tailwind\/config\.js$/],
