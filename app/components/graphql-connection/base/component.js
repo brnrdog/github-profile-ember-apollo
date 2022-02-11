@@ -5,7 +5,7 @@ import { task } from 'ember-concurrency';
 import get from 'lodash/get';
 import { loadMoreFactory, mapEdges } from '../../../graphql';
 
-export default class GraphqlConnectionBaseComponent extends Component {
+export default class hasNextPageGraphqlConnectionBaseComponent extends Component {
   @service graphql;
   @tracked data;
   @tracked variables;
@@ -28,6 +28,11 @@ export default class GraphqlConnectionBaseComponent extends Component {
   *loadMore() {
     const loadMore = loadMoreFactory(this.data, { path: this.path });
     yield loadMore();
+  }
+
+  get hasNextPage() {
+    console.log(get(this.data, `${this.path}.pageInfo.hasNextPage`));
+    return get(this.data, `${this.path}.pageInfo.hasNextPage`);
   }
 
   get nodes() {

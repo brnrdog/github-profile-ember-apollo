@@ -34,6 +34,8 @@
     </div>
   </div>
 {{/each}}
-<Button {{on 'click' @loadMore}} disabled={{@loading}}>
-  {{if @loading 'Loading...' 'Load more'}}
-</Button>
+{{#if @hasNextPage}}
+  <Button {{on 'click' @loadMore}} disabled={{@loading}}>
+    {{if @loading 'Loading...' 'Load more'}}
+  </Button>
+{{/if}}
