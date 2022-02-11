@@ -17,7 +17,10 @@ export default class GraphqlConnectionBaseComponent extends Component {
 
   @task
   *fetchData() {
-    this.data = yield this.graphql.watchQuery({ query: this.query });
+    this.data = yield this.graphql.watchQuery({
+      query: this.query,
+      variables: this.variables,
+    });
   }
 
   @task
