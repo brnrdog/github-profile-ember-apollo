@@ -1,12 +1,29 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import query from './query.graphql';
-import { tracked } from '@glimmer/tracking';
-export default class ProfileRoute extends Route {
-  @service graphql;
-  @tracked organization = 'github';
+import { task } from 'ember-concurrency';
 
-  async model() {
-    return this.graphql.watchQuery({ query });
+export default class OrganizationRoute extends Route {
+  @service graphql;
+
+  model(params) {
+    const term = params.organization;
+
+    return {
+      data: this.fetchData.perform(term),
+      term,
+    };
+  }
+
+  @task *fetchData(organization) {
+    return yield this.graphql.watchQuery({
+      query,
+      variables: { organization },
+    });
+  }
+
+  beforeModel() {
+    console.log('w');
+    this.transitionTo('organizations.repositories', this.term);
   }
 }

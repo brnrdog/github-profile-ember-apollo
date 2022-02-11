@@ -1,0 +1,17 @@
+<div
+  class='sticky top-0 bg-white bg-opacity-50 backdrop-blur-md border-b border-white'
+>
+  <form {{on 'submit' this.onSubmit}}>
+    <div class='max-w-screen-md mx-auto px-6 py-4 flex items-center'>
+      <input
+        id='organization-input'
+        value={{this.term}}
+        type='text'
+        onChange={{this.onChange}}
+        placeholder='Search for an organization'
+        autofocus
+        class='w-full border-2 border-gray-400 py-1 px-2 focus:outline-none focus:border-black'
+      />
+    </div>
+  </form>
+</div>

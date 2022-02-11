@@ -1,5 +1,5 @@
-query OrganizationQuery {
-  organization(login: "github") {
+query OrganizationQuery($organization: String!) {
+  organization(login: $organization) {
     id
     name
     login
