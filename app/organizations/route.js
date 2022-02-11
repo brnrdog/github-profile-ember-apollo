@@ -23,7 +23,6 @@ export default class OrganizationRoute extends Route {
   }
 
   beforeModel() {
-    console.log('w');
     this.transitionTo('organizations.repositories', this.term);
   }
 }

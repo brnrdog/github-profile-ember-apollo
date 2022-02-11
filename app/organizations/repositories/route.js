@@ -1,3 +1,11 @@
 import Route from '@ember/routing/route';
 
-export default class ProfileRepositoriesRoute extends Route {}
+export default class OrganizationRepositoriesRoute extends Route {
+  model() {
+    const { organization } = this.paramsFor('organizations');
+
+    return {
+      organization,
+    };
+  }
+}
