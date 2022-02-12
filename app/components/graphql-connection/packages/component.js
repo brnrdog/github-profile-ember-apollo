@@ -5,6 +5,7 @@ export default class GraphqlConnectionPackagesComponent extends GraphqlConnectio
   setup() {
     this.query = query;
     this.path = 'organization.packages';
+    this.variables = { organization: this.args.organization };
   }
 
   get packages() {

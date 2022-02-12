@@ -1,5 +1,5 @@
-query OrganizationPackagesQuery($endCursor: String) {
-  organization(login: "github") {
+query OrganizationPackagesQuery($organization: String!, $endCursor: String) {
+  organization(login: $organization) {
     id
     packages(first: 10, after: $endCursor) {
       totalCount
