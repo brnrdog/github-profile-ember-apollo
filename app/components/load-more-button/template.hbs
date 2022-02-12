@@ -1,3 +1,22 @@
-<Button {{on 'click' @loadMore}} disabled={{@loading}}>
-  {{if @loading 'Loading...' 'Load more'}}
-</Button>
+{{! app/components/coaches/list/template.hbs }}
+{{#if this.isFirstLoading}}
+  <LoadingState />
+{{else}}
+  <div>
+    Total:
+    {{this.totalCount}}
+  </div>
+  <ul>
+    {{#each this.coaches as |coach|}}
+      <li>
+        {{coach.name}}
+      </li>
+    {{/each}}
+  </ul>
+  {{#if this.hasNextPage}}
+    <LoadMoreButton
+      @onClick={{this.loadMore}}
+      @isLoading={{this.isLoadingMore}}
+    />
+  {{/if}}
+{{/if}}

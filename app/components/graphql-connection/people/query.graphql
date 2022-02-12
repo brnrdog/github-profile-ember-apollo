@@ -1,5 +1,5 @@
-query PeopleQuery($endCursor: String) {
-  organization(login: "github") {
+query PeopleQuery($organization: String!, $endCursor: String) {
+  organization(login: $organization) {
     id
     people: membersWithRole(first: 10, after: $endCursor) {
       totalCount

@@ -31,7 +31,6 @@ export default class hasNextPageGraphqlConnectionBaseComponent extends Component
   }
 
   get hasNextPage() {
-    console.log(get(this.data, `${this.path}.pageInfo.hasNextPage`));
     return get(this.data, `${this.path}.pageInfo.hasNextPage`);
   }
 

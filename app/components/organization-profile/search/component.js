@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
-export default class OrganizatinoProfileSearchComponent extends Component {
+export default class OrganizationProfileSearchComponent extends Component {
   @tracked term = this.args.term;
   @service router;
 
@@ -15,6 +15,6 @@ export default class OrganizatinoProfileSearchComponent extends Component {
   @action
   onSubmit(event) {
     event.preventDefault();
-    this.router.transitionTo('organizations', this.term || 'github');
+    this.router.transitionTo(this.router.currentRouteName, this.term);
   }
 }
