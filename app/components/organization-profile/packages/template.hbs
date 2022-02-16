@@ -1,13 +1,9 @@
-{{did-update this.fetchData.perform @organization}}
+{{did-update this.fetchData.perform @variables}}
 {{#if this.isFirstLoading}}
   <LoadingState>
     Fetching packages, please wait...
   </LoadingState>
 {{else}}
-  <div class='mb-4'>
-    {{this.totalCount}}
-    packages found
-  </div>
   <div class='flex gap-4 flex-col'>
     {{#each this.packages as |package|}}
       <div>
@@ -38,11 +34,12 @@
         </div>
       </div>
     {{/each}}
-    <div>
-      <LoadMoreButton
-        @loading={{this.loading}}
-        @loadMore={{perform this.loadMore}}
-      />
-    </div>
+    <LoadMoreButton
+      @loading={{this.loading}}
+      @loadMore={{perform this.loadMore}}
+      @hasNextPage={{this.hasNextPage}}
+      @count={{this.packages.length}}
+      @totalCount={{this.totalCount}}
+    />
   </div>
 {{/if}}

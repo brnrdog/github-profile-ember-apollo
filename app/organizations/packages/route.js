@@ -2,6 +2,9 @@ import Route from '@ember/routing/route';
 
 export default class ProfilePackagesRoute extends Route {
   model() {
-    return this.modelFor('organizations').term;
+    const { organization } = this.paramsFor('organizations');
+    const variables = { organization };
+
+    return variables;
   }
 }

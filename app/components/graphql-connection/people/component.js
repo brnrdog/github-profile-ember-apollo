@@ -5,7 +5,7 @@ export default class GrpahqlConnectionPeopleComponent extends GraphqlConnectionB
   setup() {
     this.query = query;
     this.path = 'organization.people';
-    this.variables = { organization: this.args.organization };
+    this.variables = this.args.variables;
   }
 
   get people() {
