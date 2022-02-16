@@ -1,3 +1,4 @@
+import Repository from '../../../models/repository';
 import ConnectionBaseComponent from '../base/component';
 import query from './query.graphql';
 
@@ -9,6 +10,6 @@ export default class GraphqlConnectionRepositoriesComponent extends ConnectionBa
   }
 
   get repositories() {
-    return this.nodes;
+    return this.nodes.map((node) => new Repository(node));
   }
 }
