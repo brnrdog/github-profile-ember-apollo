@@ -1,13 +1,13 @@
 {{did-update this.fetchData.perform @variables}}
 {{#if this.isFirstLoading}}
-  <LoadingState>
+  <FeedbackState>
     Fetching packages, please wait...
-  </LoadingState>
+  </FeedbackState>
 {{else}}
   {{#if this.isEmpty}}
-    <LoadingState>
+    <FeedbackState>
       This organization does not have any packages registered on GitHub.
-    </LoadingState>
+    </FeedbackState>
   {{else}}
     <div class='flex gap-4 flex-col'>
       {{#each this.packages as |package|}}

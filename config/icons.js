@@ -1,5 +1,1 @@
-module.exports = function () {
-  return {
-    'free-solid-svg-icons': 'all',
-  };
-};
+module.exports = function () {};

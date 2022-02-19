@@ -1,8 +1,8 @@
 {{did-update this.fetchData.perform @variables}}
 {{#if this.isFirstLoading}}
-  <LoadingState>
+  <FeedbackState>
     Fetching people, please wait...
-  </LoadingState>
+  </FeedbackState>
 {{else}}
   {{#each this.people as |user|}}
     <div local-class='person'>

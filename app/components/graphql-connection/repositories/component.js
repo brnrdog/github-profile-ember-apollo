@@ -10,6 +10,6 @@ export default class GraphqlConnectionRepositoriesComponent extends ConnectionBa
   }
 
   get repositories() {
-    return this.nodes.map((node) => new Repository(node));
+    return this.nodes?.map((node) => new Repository(node));
   }
 }

@@ -1,20 +1,27 @@
 {{did-update this.fetchData.perform @variables}}
 {{#if this.isFirstLoading}}
-  <LoadingState>
+  <FeedbackState>
     Fetching repositories, please wait...
-  </LoadingState>
+  </FeedbackState>
 {{else}}
-  <OrganizationProfile::Repositories::List
-    @repos={{this.repositories}}
-    @loadMore={{perform this.loadMore}}
-    @loading={{this.loading}}
-    @hasNextPage={{this.hasNextPage}}
-  />
-  <LoadMoreButton
-    @loading={{this.loading}}
-    @loadMore={{perform this.loadMore}}
-    @hasNextPage={{this.hasNextPage}}
-    @count={{this.repositories.length}}
-    @totalCount={{this.totalCount}}
-  />
+  {{#if this.isEmpty}}
+    <FeedbackState>
+      This organization does not have any visible repositories.
+    </FeedbackState>
+  {{else}}
+    <OrganizationProfile::Repositories::List
+      @repos={{this.repositories}}
+      @loadMore={{perform this.loadMore}}
+      @loading={{this.loading}}
+      @hasNextPage={{this.hasNextPage}}
+    />
+    <LoadMoreButton
+      @loading={{this.loading}}
+      @loadMore={{perform this.loadMore}}
+      @hasNextPage={{this.hasNextPage}}
+      @count={{this.repositories.length}}
+      @totalCount={{this.totalCount}}
+    />
+
+  {{/if}}
 {{/if}}
