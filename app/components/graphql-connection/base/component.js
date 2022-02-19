@@ -30,6 +30,10 @@ export default class GraphqlConnectionBaseComponent extends Component {
     yield loadMore();
   }
 
+  get isEmpty() {
+    return this.totalCount === 0;
+  }
+
   get hasNextPage() {
     return get(this.data, `${this.path}.pageInfo.hasNextPage`);
   }
