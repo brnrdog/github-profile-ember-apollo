@@ -1,0 +1,37 @@
+<div class='my-4 flex'>
+  <div>
+    <div class='text-lg'>
+      {{@repository.nameWithOwner}}
+    </div>
+    <div class='text-gray-600 mb-2'>
+      {{@repository.description}}
+      {{@repository.language.name}}
+    </div>
+    <div class='text-sm text-gray-500 flex items-center gap-4'>
+      {{#if @repository.primaryLanguage}}
+        <div class='flex items-center'>
+          {{! template-lint-disable style-concatenation }}
+          <div
+            class='w-4 h-4 rounded-full bg-white mr-1'
+            style={{concat
+              'background-color: '
+              @repository.primaryLanguage.color
+            }}
+          >
+          </div>
+          {{@repository.primaryLanguage.name}}
+        </div>
+      {{/if}}
+      <div class='flex items-center'>
+        <div class='text-gray-700 mr-1'>
+          <FaIcon @icon='star' @prefix='far' />
+        </div>
+        {{@repository.stargazers.totalCount}}
+      </div>
+      <div>
+        Popularity:
+        {{@repository.popularity}}
+      </div>
+    </div>
+  </div>
+</div>
