@@ -11,17 +11,48 @@ export default class OrganizationProfileRepositoriesListItemComponent extends Co
   async onStarClick() {
     const variables = { repositoryId: this.args.repository.id };
     await this.graphql.mutate(
-      { mutation: starMutation, variables },
+      {
+        mutation: starMutation,
+        variables,
+        optimisticResponse: {
+          addStar: {
+            starrable: {
+              __typename: 'Repository',
+              ...this.args.repository,
+              starred: true,
+              stargazers: {
+                ...this.args.repository.stargazers,
+                totalCount: this.args.repository.stargazers.totalCount + 1,
+              },
+            },
+          },
+        },
+      },
       'repository'
     );
   }
-  a;
 
   @action
   async onUnstarClick() {
     const variables = { repositoryId: this.args.repository.id };
     await this.graphql.mutate(
-      { mutation: unstarMutation, variables },
+      {
+        mutation: unstarMutation,
+        variables,
+        optimisticResponse: {
+          removeStar: {
+            starrable: {
+              __typename: 'Repository',
+              ...this.args.repository,
+              starred: false,
+              stargazers: {
+                ...this.args.repository.stargazers,
+                totalCount: this.args.repository.stargazers.totalCount - 1,
+              },
+            },
+          },
+        },
+      },
       'repository'
     );
   }
