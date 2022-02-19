@@ -1,7 +1,7 @@
 import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { task, waitForProperty } from 'ember-concurrency';
+import { task } from 'ember-concurrency';
 import get from 'lodash/get';
 import { loadMoreFactory, mapEdges } from '../../../graphql';
 
@@ -18,7 +18,6 @@ export default class GraphqlConnectionBaseComponent extends Component {
   @task
   *fetchData() {
     this.setup();
-    // yield waitForProperty('variables');
     this.data = yield this.graphql.watchQuery({
       query: this.query,
       variables: this.variables,

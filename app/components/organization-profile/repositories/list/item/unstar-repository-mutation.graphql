@@ -1,0 +1,11 @@
+#import RepositoryFragment from 'github-profile/components/graphql-connection/repositories/repository-fragment.graphql'
+
+mutation UnstarRepository($repositoryId: ID!) {
+  removeStar(input: { starrableId: $repositoryId }) {
+    starrable {
+      ... on Repository {
+        ...RepositoryFragment
+      }
+    }
+  }
+}

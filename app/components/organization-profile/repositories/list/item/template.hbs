@@ -22,12 +22,24 @@
           {{@repository.primaryLanguage.name}}
         </div>
       {{/if}}
-      <div class='flex items-center'>
-        <div class='text-gray-700 mr-1'>
-          <FaIcon @icon='star' @prefix='far' />
+      <button
+        type='button'
+        {{on
+          'click'
+          (if @repository.starred this.onUnstarClick this.onStarClick)
+        }}
+      >
+        <div class='flex items-center'>
+          <div class='text-gray-700 mr-1'>
+            {{#if @repository.starred}}
+              <FaIcon @icon='star' />
+            {{else}}
+              <FaIcon @icon='star' @prefix='far' />
+            {{/if}}
+          </div>
+          {{@repository.stargazers.totalCount}}
         </div>
-        {{@repository.stargazers.totalCount}}
-      </div>
+      </button>
       <div>
         Popularity:
         {{@repository.popularity}}

@@ -1,3 +1,5 @@
 module.exports = function () {
-  return {};
+  return {
+    'free-solid-svg-icons': 'all',
+  };
 };

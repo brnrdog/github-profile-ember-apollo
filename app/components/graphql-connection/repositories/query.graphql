@@ -1,3 +1,5 @@
+#import RepositoryFragment from './repository-fragment.graphql'
+
 query RepositoriesQuery($organization: String!, $endCursor: String) {
   organization(login: $organization) {
     id
@@ -7,24 +9,14 @@ query RepositoriesQuery($organization: String!, $endCursor: String) {
       orderBy: { field: STARGAZERS, direction: DESC }
     ) {
       totalCount
+
       pageInfo {
         hasNextPage
         endCursor
       }
       edges {
         node {
-          id
-          name
-          nameWithOwner
-          description
-          url
-          primaryLanguage {
-            name
-            color
-          }
-          stargazers {
-            totalCount
-          }
+          ...RepositoryFragment
         }
       }
     }
